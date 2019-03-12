@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="hom.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="pics/deal1.jpeg" style="width:100% ;height:220px">
+                <div class="text">Mobile Deals</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="pics/deal2.jpg" style="width:100% ;height:220px">
+                <div class="text">Electronics Deals</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="pics/deal3.jpg" style="width:100% ;height:220px">
+                <div class="text">Lighting Deals</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+    <div id="nav-list">
+        <ul id="n-list">
+            <li class="li-class"><a
+                    href="https://www.amazon.in/s/?i=grocery&k=amazon+grocery&tag=googinkenshoo-21&ascsubtag=_k_EAIaIQobChMI9LTQoPP74AIVVR2PCh1sJwfUEAAYASAAEgKP6vD_BwE_k_&gclid=EAIaIQobChMI9LTQoPP74AIVVR2PCh1sJwfUEAAYASAAEgKP6vD_BwE"
+                    target="blank">Grocery</a></li>
+            <li class="li-class"><a href="https://www.amazon.in/mobile-phones/b?ie=UTF8&node=1389401031"
+                    target="blank">Mobiles</a></li>
+            <li class="li-class"><a
+                    href="https://www.google.com/search?q=amazon+fashion&rlz=1C1GCEU_enIN839IN839&oq=amazon+faishon&aqs=chrome.1.69i57j0l5.41063j0j4&sourceid=chrome&ie=UTF-8"
+                    target="blank">Fashion</a></li>
+            <li class="li-class"><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201460880"
+                    target="blank">Prime</a></li>
+        </ul>
+        <h3 id="nav-bar"> <a href="login.html">Login/Signup </a></h3>
+    </div>
+    <div id="container">
+        <h1>Sign Up</h1>
+        <p><strong>Please fill in this form to create an account.</strong></p>
+        <hr>
+        <label for="First name"><b>First name</b></label>
+        <input type="text" placeholder="Enter the first name" name="Fname" id="inp1" required> <br> <br>
+        <label for="Last name"><b>Last name</b></label>
+        <input type="text" placeholder="Enter the Last name" name="Lname" id="inp1" required> <br> <br>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="inp2" required> <br> <br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="inp3" required> <br> <br>
+        <label for="psw-repeat"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="psw-repeat" id="inp4" required> <br> <br>
+        <button class="signupbtn" value="submit" onclick="sub()">submit</button>
+        <button class="signupbtn" value="login" onclick="loginNav()">login</button>
+    </div>
+    <div id="side-bar">
+        <h2>Todays Deals!</h2>
+        <nav>
+            <img src="pics/img1.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img2.jpg" height="130" width="130" alt="deal"> </a>
+            <img src="pics/img3.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img4.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img5.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img6.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img7.JPG" height="130" width="130" alt="deal"> </a>
+            <img src="pics/img8.jpg" height="130" width="130" alt="deal"> </a>
+        </nav>
+    </div>
+    <footer>
+        <p>
+            <pre><strong>  <b>                                  Brazil   Canada   China   France   Germany   Italy   Japan   Mexico  Netherlands  Spain United Kingdom  United States </b> </strong></strong></pre>
+        </p>
+        <h2>Conditions of Use & Sale Privacy Notice Interest-Based Ads© 1996-2019, Amazon.com, Inc. or its affiliates
+        </h2>
+    </footer>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        function loginNav() {
+            window.location.href = "login.html";
+        }
+
+
+        function sub() {
+            var a = document.getElementById("inp1").value;
+            var b = document.getElementById("inp2").value;
+            var c = document.getElementById("inp3").value;
+            var d = document.getElementById("inp4").value;
+            console.log(a);
+            if (c <= 8 || d <= 8) { alert("please give password length of 8 or above"); }
+            else {
+                if (c != d) { alert("password does not match"); }
+                else {
+
+
+                    if (a == "" || b == "" || c == "" || d == "") {
+                        document.getElementById('container').innerHTML = 'Invalid submission';
+                    }
+                    else {
+                        document.getElementById('container').innerHTML = 'Hi.. welcome, you are sucessfully logged in !';
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="hom.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="pics/deal1.jpeg" style="width:100% ;height:220px">
+                <div class="text">Mobile Deals</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="pics/deal2.jpg" style="width:100% ;height:220px">
+                <div class="text">Electronics Deals</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="pics/deal3.jpg" style="width:100% ;height:220px">
+                <div class="text">Lighting Deals</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+    <div id="nav-list">
+        <ul id="n-list">
+            <li class="li-class"><a
+                    href="https://www.amazon.in/s/?i=grocery&k=amazon+grocery&tag=googinkenshoo-21&ascsubtag=_k_EAIaIQobChMI9LTQoPP74AIVVR2PCh1sJwfUEAAYASAAEgKP6vD_BwE_k_&gclid=EAIaIQobChMI9LTQoPP74AIVVR2PCh1sJwfUEAAYASAAEgKP6vD_BwE"
+                    target="blank">Grocery</a></li>
+            <li class="li-class"><a href="https://www.amazon.in/mobile-phones/b?ie=UTF8&node=1389401031"
+                    target="blank">Mobiles</a></li>
+            <li class="li-class"><a
+                    href="https://www.google.com/search?q=amazon+fashion&rlz=1C1GCEU_enIN839IN839&oq=amazon+faishon&aqs=chrome.1.69i57j0l5.41063j0j4&sourceid=chrome&ie=UTF-8"
+                    target="blank">Fashion</a></li>
+            <li class="li-class"><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201460880"
+                    target="blank">Prime</a></li>
+        </ul>
+
+        <h3 id="nav-bar"> <a href="login.html">Login/Signup </a></h3>
+    </div>
+
+    <div id="login">
+        <h1> Login </h1>
+        <label for="username"><b>User name</b></label>
+        <input type="text" id="username" placeholder="username" name="username" required><br>
+        <span id="name"></span>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="password" name="psw" placeholder="password" required><br>
+        <span id="password"></span>
+        <button onClick="submits()"> login</button>
+        <button onClick="navSignup()"> signup</button>
+    </div>
+    <div id="side-bar">
+        <h2>Todays Deals!</h2>
+        <nav>
+            <img src="pics/img1.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img2.jpg" height="130" width="130" alt="deal"> </a>
+            <img src="pics/img3.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img4.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img5.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img6.jpg" height="130" width="130" alt="deal"></a>
+            <img src="pics/img7.JPG" height="130" width="130" alt="deal"> </a>
+            <img src="pics/img8.jpg" height="130" width="130" alt="deal"> </a>
+        </nav>
+    </div>
+
+
+    <footer>
+        <p>
+            <pre><strong>  <b>                                  Brazil   Canada   China   France   Germany   Italy   Japan   Mexico  Netherlands  Spain United Kingdom  United States </b> </strong></strong></pre>
+        </p>
+        <h2>Conditions of Use & Sale Privacy Notice Interest-Based Ads© 1996-2019, Amazon.com, Inc. or its affiliates
+        </h2>
+    </footer>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        function submits() {
+            var x = document.getElementById("username").value;
+            var y = document.getElementById("password").value;
+            console.log(x);
+            if (x == "" || y == "") {
+                document.getElementById('login').innerHTML = 'Invalid submission';
+            }
+            else {
+                document.getElementById('login').innerHTML = 'Hi.. welcome, you are sucessfully logged in !';
+            }
+        }
+        function navSignup(){
+            window.location.href = "signup.html";   
+        }
+    </script>
+
+</body>
+
+</html>
