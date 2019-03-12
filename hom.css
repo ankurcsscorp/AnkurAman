@@ -6,8 +6,8 @@
 }
 #nav-list{
 height : auto;
-border : 3px solid black;
-background-color: #0864A2;
+border : 1.5px solid black;
+background-color:#1C2833  ;
 margin: auto;
 }
 h3{
@@ -29,6 +29,16 @@ h3{
 }
 .li-class a {
   color: #f2f2f2;
+  
+}
+.li-class a:hover {
+  color: #E67E22;
+  background-color: #D7DBDD;
+ 
+}
+.li-class a:active {
+  color: #FAD7A0;
+  background-color:#2874A6;
 }
 .nav-list {
     display: inline;

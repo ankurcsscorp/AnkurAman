@@ -3,6 +3,16 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="hom.css">
+    <style>
+        #side-bar {
+            height: 1500px;
+            margin: 5px;
+        }
+
+        sup {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,22 +62,46 @@
             <li class="li-class"><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201460880"
                     target="blank">Prime</a></li>
         </ul>
-        <h3 id="nav-bar"> <a href="login.html">Login/Signup </a></h3>
+        <h3 id="nav-bar"> <a href="home.html">Home</a></h3>
     </div>
     <div id="container">
         <h1>Sign Up</h1>
         <p><strong>Please fill in this form to create an account.</strong></p>
-        <hr>
+        <hr><sup>*</sup>
         <label for="First name"><b>First name</b></label>
         <input type="text" placeholder="Enter the first name" name="Fname" id="inp1" required> <br> <br>
+        <hr><sup>*</sup>
         <label for="Last name"><b>Last name</b></label>
-        <input type="text" placeholder="Enter the Last name" name="Lname" id="inp1" required> <br> <br>
+        <input type="text" placeholder="Enter the Last name" name="Lname" id="inp2" required> <br> <br>
+        <hr><sup>*</sup>
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="inp2" required> <br> <br>
+        <input type="text" placeholder="Enter Email" name="email" id="inp3" required> <br> <br>
+        <hr><sup>*</sup>
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="inp3" required> <br> <br>
+        <input type="password" placeholder="Enter Password" name="psw" id="inp4"   required> <br> <br>
+        <hr><sup>*</sup>
         <label for="psw-repeat"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="psw-repeat" id="inp4" required> <br> <br>
+        <input type="password" placeholder="Confirm Password" name="psw-repeat" id="inp5" required> <br> <br>
+        <hr><sup>*</sup>
+        <label for="add"><b>Address</b></label> <br>
+        <textarea name="add"> </textarea><br> <br>
+        <hr><sup>*</sup>
+        Country: <select name="state" id="countySel" size="1"  required>
+            <option value="" selected="selected">Select country</option>
+        </select>
+        <hr><sup>*</sup>
+        State: <select name="countrya" id="stateSel" size="1" required>
+            <option value="" selected="selected">select country first</option>
+        </select>
+        <hr><sup>*</sup>
+        District: <select name="district" id="districtSel" size="1" required >
+            <option value="" selected="selected">select state first</option>
+        </select><br><br>
+        <hr><sup>*</sup>
+        <label for="pincode" ><b>Pincode</b></label> <br>
+        <input type="text" name="pincode" placeholder="pincode" maxlength="6" required><br><br>
+        <label for="dateofbirth"><b>Date of birth</b></label> <br>
+        <input type="date" name="dateofbirth" placeholder="Date of Birth"><br><br>
         <button class="signupbtn" value="submit" onclick="sub()">submit</button>
         <button class="signupbtn" value="login" onclick="loginNav()">login</button>
     </div>
@@ -128,19 +162,83 @@
             var b = document.getElementById("inp2").value;
             var c = document.getElementById("inp3").value;
             var d = document.getElementById("inp4").value;
+            var e = document.getElementById("inp5").value;
+            var f = document.getElementById("countySel").value;
+            var g = document.getElementById("stateSel").value;
+            var h = document.getElementById("districtSel").value;
             console.log(a);
-            if (c <= 8 || d <= 8) { alert("please give password length of 8 or above"); }
+
+
+
+
+            if (a == "" || b == "" || c == "" || d == "" || e == "" || f=="" || g=="" || h=="") {
+                alert('Please fill all the mandatory fields');
+            }
+            else if (d <= 8 || e <= 8) {
+                alert("please give password length of 8 or above");
+            }
+            else if(d.search(/[0-9]/)<0){
+                alert("password should contain numbers");
+
+            }
+            else if(d.search(/[A-Z]/)<0){
+                alert("password should contain upper case ");
+
+            }
+            else if(d.search(/[a-z]/)<0){
+                alert("password should contain lower case ");
+
+            }
+            else if(d.search(/[!@#$%^&*]/)<0){
+                alert("password should contain special charecter ");
+
+            }
+             
+            else if (d != e) {
+                alert("password does not match");
+            }
+
             else {
-                if (c != d) { alert("password does not match"); }
-                else {
+                document.getElementById('container').innerHTML = 'Hi.. welcome, you are sucessfully logged in !';
+            }
+        }
 
-
-                    if (a == "" || b == "" || c == "" || d == "") {
-                        document.getElementById('container').innerHTML = 'Invalid submission';
-                    }
-                    else {
-                        document.getElementById('container').innerHTML = 'Hi.. welcome, you are sucessfully logged in !';
-                    }
+        var stateObject = {
+            "India": {
+                "Delhi": ["new Delhi", "North Delhi"],
+                "Kerala": ["Thiruvananthapuram", "Palakkad"],
+                "Goa": ["North Goa", "South Goa"],
+            },
+            "Australia": {
+                "South Australia": ["Dunstan", "Mitchell"],
+                "Victoria": ["Altona", "Euroa"]
+            }, "Canada": {
+                "Alberta": ["Acadia", "Bighorn"],
+                "Columbia": ["Washington", ""]
+            },
+        }
+        window.onload = function () {
+            var countySel = document.getElementById("countySel"),
+                stateSel = document.getElementById("stateSel"),
+                districtSel = document.getElementById("districtSel");
+            for (var country in stateObject) {
+                countySel.options[countySel.options.length] = new Option(country, country);
+            }
+            countySel.onchange = function () {
+                stateSel.length = 1; // remove all options bar first
+                districtSel.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done 
+                for (var state in stateObject[this.value]) {
+                    stateSel.options[stateSel.options.length] = new Option(state, state);
+                }
+            }
+            countySel.onchange(); // reset in case page is reloaded
+            stateSel.onchange = function () {
+                districtSel.length = 1; // remove all options bar first
+                if (this.selectedIndex < 1) return; // done 
+                var district = stateObject[countySel.value][this.value];
+                for (var i = 0; i < district.length; i++) {
+                    districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
                 }
             }
         }
